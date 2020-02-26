@@ -1,0 +1,96 @@
+{% extends 'finance/base.html' %}
+
+{% block content %}
+<div class="col-sm-8 text-left">
+      <table style=width:75%;>
+        <tr>
+          <th><h1>Balance:<p style=color:green;>{{balance}}$</p></h1></th>
+          <th><h1>Transactions:<p style=text-align:center;>{{count}}</p></h1></th>
+        </tr>
+
+
+      </table>
+
+
+      <form action="addTransaction" method="POST">{% csrf_token %}
+          <button class="btn btn-style" type="submit"  value="Submit" style=border-radius:4%;><i class="fa fa-plus"></i> New</button>
+      </form>
+      <div  style = border: solid;>
+      <p>Filter:</p>
+      <form method="get">
+        <table style = width:75 %;>
+
+          <tr>
+            <th>Amount:</th>
+            <th>Date:</th>
+            <th>Name:</th>
+
+          </tr>
+          <tr>
+            <th>{{myFilter.form.amount}}</th>
+            <th>{{myFilter.form.date}}</th>
+            <th>{{myFilter.form.name}}</th>
+
+            <th><button class="btn btn-primary" type="sumbit" name="button"><span class="glyphicon glyphicon-search"></span> Search</button></th>
+              </tr>
+            </table>
+          </form>
+        </div>
+      <div class="table-responsive">
+        <table class="table table-condensed" style=width:75%;>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>amont</th>
+              <th>date</th>
+              <th>name</th>
+              <th>cost</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in page_obj %}
+              <tr>
+                <th>{{ i.id}}</th>
+                <th>{{i.amount}}</th>
+                <th>{{ i.date|date:"m-d" }}</th>
+                <th>{{ i.name }}</th>
+                <th>{{ i.transaction_amount }}$</th>
+                <th><form action="edit/{{ i.id }}" method="get">
+                      <button class="btn btn-warning" name="edit" value="{{ i.id }}">edit</button>
+                    </form>
+                </th>
+                <th><form action="" method="get">
+                  <button class="btn btn-danger" name="DeleteButton" value="{{ i.id }}">X</button>
+                </form>
+                </th>
+                  </tr>
+
+            {% endfor %}
+
+          </tbody>
+        </table>
+        <div class="pagination">
+<span class="step-links">
+{% if page_obj.has_previous %}
+  <a href="?page=1">&laquo; </a>
+  <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+{% endif %}
+
+<a class="active">
+  {{ page_obj.number }}
+</a>
+
+{% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+{% endif %}
+</span>
+</div>
+      </div>
+    </div>
+
+</div>
+      </body>
+</html>
+{% endblock %}

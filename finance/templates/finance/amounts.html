@@ -1,0 +1,35 @@
+
+{% extends 'finance/base.html' %}
+{% block content %}
+<div class="col-sm-8 text-left">
+    <h1>Amounts</h1>
+    <form class="" action="amounts/new_amount" method="POST">{% csrf_token %}
+      <button type="submit" name="button">NEW</button>
+
+    </form>
+      <table class="table" style = "width:25%">
+
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for i in amounts %}
+          <th>{{ i.pk }}</th>
+          <th>{{ i.name }}</th>
+          <th>{{ i.balance }}$</th>
+          <th><form action="" method="get">
+            <button class="btn btn-danger" name="DeleteButton" value="{{ i.id }}">X</button>
+          </form>
+          </th>
+        </tr>
+
+      </tbody>
+        {% endfor %}
+    </table>
+    </div>
+    {% endblock %}

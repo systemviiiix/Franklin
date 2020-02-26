@@ -1,0 +1,24 @@
+{% extends 'finance/base.html' %}
+  {% block content %}
+
+<h1>Details:</h1>
+<form  method="POST">{% csrf_token %}
+  <table class = "table" style="width:20%;">
+      <tr>
+        {{form.as_table}}
+        <th></th>
+        <th><input type="submit"  value="save"></th>
+      </tr>
+      <!-- <tr>
+        <th><input type="text" name="{{form.name.name}}" placeholder="{{values.name}}"></th>
+      </tr> -->
+      <!-- <tr><th>Name:</th><th>{{form.name}}</th></tr> -->
+      <!-- <tr><th>Date:</th><th>{{form.date}}</th></tr> -->
+      <!-- <tr><th>Name:</th><th>{{form.name}}</th></tr>
+      <tr><th>Amount:</th><th>{{form.amount}}</th></tr>
+      <tr><th>Cost:</th><th>{{form.transaction_amount}}</th></tr> -->
+
+        <!-- <button class="mybutton" name="submit" type="submit">Submit</button> -->
+  </table>
+</form>
+{% endblock %}

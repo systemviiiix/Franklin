@@ -1,0 +1,32 @@
+{% extends 'finance/base.html' %}
+
+{% block content %}
+<style >
+th, td {
+  padding: 2px;
+}
+</style>
+
+<div class="col-sm-8 text-left">
+<h1>Login:</h1>
+<form  method="POST">{% csrf_token %}
+    <table style=width:40%;>
+      <tr>
+        <th><i class="fa fa-user icon"></i></th>
+        <th><input type="username" name="username"></th>
+        </tr>
+      <tr>
+        <th><i class="fa fa-key icon"></i></th>
+        <th><input type="password" name="password"></th>
+      </tr>
+      <tr>
+        <th></th><th><input class=btn type="submit" name="Login" ></th>
+      </tr>
+    </table>
+</form>
+      <span>Dont have an account?</span><a href="/register"> Register</a>
+
+</div>
+
+
+{% endblock %}

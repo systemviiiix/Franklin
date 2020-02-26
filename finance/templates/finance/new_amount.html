@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+<meta charset="utf-8"></meta>
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<title></title>
+
+<style>
+  .mybutton {
+     background-color: #4CAF50;
+     border: none;
+     color: white;
+     padding: 16px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 14px; }
+  th{
+  text-align:left;
+}
+</style>
+<body>
+<h1>Amount details:</h1>
+  <form action="" method="POST"> {% csrf_token %}
+    <table class = "table" style="width:20%;">
+      <tbody>
+        <tr><th>Name:</th><th>{{form.name}}</th></tr>
+        <tr><th>Date:</th><th>{{form.type}}</th></tr>
+        <tr><th>Amount:</th><th>{{form.balance}}</th></tr>
+        <tr>
+        <th></th>
+        <th>
+          <button class="mybutton" name="submit" type="submit">Submit</button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
+  </form>
+</body>
+</html>

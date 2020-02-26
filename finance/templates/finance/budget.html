@@ -1,0 +1,21 @@
+{% extends 'finance/base.html' %}
+{%block content%}
+<h1>Budgets:</h1>
+{%for i in budgets%}
+<div style=margin-left:20%;>
+    <p>{{i.name}}</p>
+    <p>{{i.date}}</p>
+    <p>{{i.goal}}</p>
+    <p>{{i.amount}}</p>
+    <p>{{i.colected}}</p>
+    <p>{{i.get_procents}}</p>
+    <p>allready collected:</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow={{i.get_procents}}
+        aria-valuemin="0" aria-valuemax="100" style=width:{{i.get_procents}}%>
+        {{i.get_procents}}
+      </div>
+    </div>
+</div>
+{%endfor%}
+{%endblock%}

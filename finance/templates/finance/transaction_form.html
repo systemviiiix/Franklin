@@ -1,0 +1,47 @@
+{% extends 'finance/base.html' %}
+
+{% block content %}
+
+
+<style>
+  .mybutton {
+     background-color: #4CAF50;
+     border: none;
+     color: white;
+     padding: 16px 32px;
+     text-align: center;
+     text-decoration: none;
+     display: inline-block;
+     font-size: 14px; }
+  th{
+  text-align:left;
+}
+</style>
+<div class="col-sm-8 text-left">
+
+<h1>Transaction details:</h1>
+<form  action="" method="POST">{% csrf_token %}
+  <table class = "table" style="width:20%;">
+    <tbody>
+      <tr>
+
+        <!-- <th><input type="text" name="{{form.name.name}}" placeholder="{{values.name}}"></th> -->
+      </tr>
+
+      <tr><th>Name:</th><th>{{form.name}}</th></tr>
+      <tr><th>Category</th><th>{{form.category}}</th></tr>
+      <!-- <tr><th>Date:</th><th>{{form.date}}</th></tr> -->
+      <tr><th>Amount:</th><th>{{form.amount}}</th></tr>
+      <tr><th>Cost:</th><th>{{form.transaction_amount}}</th></tr>
+      <tr>
+
+      <th>
+        <button class="mybutton" name="submit" type="submit">Submit</button>
+      </th>
+    </tr>
+  </tbody>
+</table>
+
+</form>
+</div>
+{% endblock %}
