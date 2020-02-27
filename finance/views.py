@@ -118,7 +118,6 @@ def user_page(request):
 
     # Delete selected items-----------------------------------------------------
     if request.POST.get('delete'):
-        print(request.POST.getlist("item"))
         obj = Trasaction.objects.filter(id__in=request.POST.getlist('item'))
         obj.delete()
         #transactions.filter(id__in=request.POST.getlist('item')).delete()
